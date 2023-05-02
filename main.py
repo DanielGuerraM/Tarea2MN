@@ -25,39 +25,46 @@
 
 #Importamos las respectivas librerias
 import numpy as np
+
 import Metodos.Lagrange as lg
 import Metodos.Base_radial as br
 import Metodos.Trazadores_lineales as tl
+import Metodos.Trazadores_Cuadraticos as tc
+import Metodos.Trazadores_Cubicos as tcb
 
 print('Tarea #2, Elija con que metodo desea resolver el ejercicio\n')
-print('1. P1olinomio de Lagrange\n2. Funciones de base radial\n3. Trazadores lineales\n4. Trazadores cuadráticos\n5. Trazadores cúbicos\n\n')
+print('1. Polinomio de Lagrange\n2. Funciones de base radial\n3. Trazadores lineales\n4. Trazadores cuadráticos\n5. Trazadores cúbicos\n\n')
 idMetodo = int(input('Digite el metodo a ejecutar: '))
 x = np.array([0, 6, 10, 13, 17, 20, 28])
 y1 = np.array([6.67, 17.33, 42.67, 37.33, 30.10, 29.31, 28.74])
 y2 = np.array([6.67, 16.11, 18.89, 15.00, 10.56, 9.44, 8.89])
 
-
+# Funcion que ejecuta el metodo de lagrange
 def ejecuta_lagrenge():
     lg.Metodo_Lagrange(x, y1, y2)
 
+# Funcion que ejecuta el metodo en base radial
 def ejecuta_Base_Radial():
     br.Metodo_Base_Radial(x, y1, y2)
 
+# Funcion que ejecuta el metodo trazadores lineales
 def ejecuta_Trazadores_lineales():
     tl.Metodo_Trazadores_lineales(x, y1, y2)
 
-# def ejecuta_ver_Todas():
-#     lg.Metodo_Lagrange(x, y1, y2)
-#     br.Metodo_Base_Radial(x, y1, y2)
-#     tl.Metodo_Trazadores_lineales(x, y1, y2)
+# Funcion que ejecuta el metodo trazadores cuadraticos
+def ejecuta_Trazadores_Cuadraticos():
+    tc.Metodo_Trazadores_Cuadraticos(x, y1, y2)
+
+# Funcion que ejecuta el metodo trazadores cubicos
+def ejecuta_Trazadores_Cubicos():
+    tcb.Metodo_Trazadores_Cubicos(x, y1, y2)
 
 diccionario_Metodos = {
     1:  ejecuta_lagrenge,
     2:  ejecuta_Base_Radial,
-    3:  ejecuta_Trazadores_lineales
-    # 4:
-    # 5:
-    # 6: ejecuta_ver_Todas
+    3:  ejecuta_Trazadores_lineales,
+    4:  ejecuta_Trazadores_Cuadraticos,
+    5:  ejecuta_Trazadores_Cubicos
 }
 
 def ejecutar_metodo(argumento):
@@ -68,9 +75,3 @@ def ejecutar_metodo(argumento):
         print('Argumento no valido')
 
 ejecutar_metodo(idMetodo)
-
-
-
-
-
-
